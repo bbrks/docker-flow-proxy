@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/docker-flow/docker-flow-proxy/actions"
 	"github.com/docker-flow/docker-flow-proxy/metrics"
 	"github.com/docker-flow/docker-flow-proxy/proxy"
 	"github.com/docker-flow/docker-flow-proxy/server"
-	"github.com/docker-flow/docker-flow-proxy/actions"
 	"github.com/gorilla/mux"
-	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 // Server defines interface used for creating DFP Web server
@@ -67,7 +67,7 @@ func (m *serve) Execute(args []string) error {
 	r.HandleFunc("/v1/docker-flow-proxy/certs", m.certsHandler)
 	r.HandleFunc("/v1/docker-flow-proxy/config", config.Get)
 	r.HandleFunc("/v1/docker-flow-proxy/metrics", sm.Get)
-	r.Handle("/metrics", prometheus.Handler())
+	r.Handle("/metrics", promhttp.Handler())
 	r.HandleFunc("/v1/docker-flow-proxy/ping", server2.PingHandler)
 	r.HandleFunc("/v1/docker-flow-proxy/reconfigure", server2.ReconfigureHandler)
 	r.HandleFunc("/v1/docker-flow-proxy/reload", server2.ReloadHandler)
