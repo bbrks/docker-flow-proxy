@@ -1,5 +1,12 @@
 # Docker Flow Proxy
 
+## Fork
+
+This fork updates versions of HAProxy, Go and Alpine to the latest versions.
+Some tests skipped that wouldn't run inside the Docker builder, and Docker Autotests disabled in order to get it automatically building in Docker Hub.
+
+## Original
+
 **This project needs adoption. I (@vfarcic) moved to Kubernetes and cannot dedicate time to this project anymore. Similarly, involvement from other contributors dropped as well. Please consider contributing yourself if you think this project is useful.**
 
 [![GitHub release](https://img.shields.io/github/release/docker-flow/docker-flow-proxy.svg)]()
