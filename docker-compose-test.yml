@@ -11,11 +11,13 @@ services:
       - HOST_IP=${HOST_IP}
       - DOCKER_HUB_USER=${DOCKER_HUB_USER}
 
-  staging-swarm-local:
+  sut:
     image: dockerflow/docker-flow-proxy-test
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - .:/src
+    depends_on:
+      - staging-swarm
     environment:
       - HOST_IP=${HOST_IP}
       - DOCKER_HUB_USER=${DOCKER_HUB_USER}
