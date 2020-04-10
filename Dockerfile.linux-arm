@@ -35,7 +35,6 @@ ENV CERTS="" \
 COPY scripts/check.sh /usr/local/bin/check.sh
 RUN chmod +x /usr/local/bin/check.sh
 
-COPY errorfiles /errorfiles
 COPY haproxy.cfg /cfg/haproxy.cfg
 RUN mkdir -p /cfg/tmpl /templates /certs /logs
 COPY haproxy.tmpl /cfg/tmpl/haproxy.tmpl

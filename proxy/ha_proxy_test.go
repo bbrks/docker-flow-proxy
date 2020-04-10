@@ -53,16 +53,6 @@ defaults
     option  http-server-close
     option  redispatch
 
-    errorfile 400 /errorfiles/400.http
-    errorfile 403 /errorfiles/403.http
-    errorfile 405 /errorfiles/405.http
-    errorfile 408 /errorfiles/408.http
-    errorfile 429 /errorfiles/429.http
-    errorfile 500 /errorfiles/500.http
-    errorfile 502 /errorfiles/502.http
-    errorfile 503 /errorfiles/503.http
-    errorfile 504 /errorfiles/504.http
-
     maxconn 5000
     timeout connect 5s
     timeout client  20s
@@ -2152,9 +2142,9 @@ func (s HaProxyTestSuite) Test_CreateConfigFromTemplates_ForwardsToHttps_WhenRed
 	}
 	p := NewHaProxy(s.TemplatesPath, s.ConfigsPath)
 	service1 := Service{
-		ServiceName:           "my-service",
+		ServiceName:              "my-service",
 		RedirectUnlessHttpsProto: true,
-		AclName:               "my-service",
+		AclName:                  "my-service",
 		ServiceDest: []ServiceDest{
 			{Port: "1111", ServicePath: []string{"/path"}, ServiceDomain: []string{"my-domain.com"}, PathType: "path_beg"},
 		},
@@ -2185,9 +2175,9 @@ func (s HaProxyTestSuite) Test_CreateConfigFromTemplates_usesHttpsRedirectCode_3
 	}
 	p := NewHaProxy(s.TemplatesPath, s.ConfigsPath)
 	service1 := Service{
-		ServiceName:           "my-service",
+		ServiceName:              "my-service",
 		RedirectUnlessHttpsProto: true,
-		AclName:               "my-service",
+		AclName:                  "my-service",
 		ServiceDest: []ServiceDest{
 			{Port: "1111", ServicePath: []string{"/path"}, ServiceDomain: []string{"my-domain.com"}, HttpsRedirectCode: "301", PathType: "path_beg"},
 		},

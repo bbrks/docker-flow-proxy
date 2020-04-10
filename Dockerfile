@@ -60,7 +60,6 @@ CMD ["docker-flow-proxy", "server"]
 HEALTHCHECK --interval=5s --start-period=3s --timeout=10s CMD check.sh
 
 COPY scripts/check.sh /usr/local/bin/check.sh
-COPY errorfiles /errorfiles
 COPY haproxy.cfg /cfg/haproxy.cfg
 COPY haproxy.tmpl /cfg/tmpl/haproxy.tmpl
 COPY --from=build /src/docker-flow-proxy /usr/local/bin/docker-flow-proxy

@@ -150,10 +150,6 @@ FROM dockerflow/docker-flow-proxy
 COPY haproxy.tmpl /cfg/tmpl/haproxy.tmpl
 ```
 
-## Custom Errors
-
-Default error messages are stored in the `/errorfiles` directory inside the *Docker Flow Proxy* image. They can be customized by creating a new image with custom error files or mounting a volume. Currently supported errors are `400`, `403`, `405`, `408`, `429`, `500`, `502`, `503`, and `504`.
-
 ## Statistics
 
 Proxy statistics can be seen through **http://[NODE_IP_OR_DNS]/admin?stats**.
