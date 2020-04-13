@@ -1,4 +1,4 @@
-FROM golang:1.14.1-alpine3.11 AS build
+FROM golang:alpine AS build
 RUN set -x \
     && apk add --update --no-cache --no-progress git g++
 ADD . /src
@@ -10,7 +10,7 @@ RUN set -x \
     && go build -v -o docker-flow-proxy
 
 
-FROM haproxy:2.1.3-alpine
+FROM haproxy:alpine
 LABEL org.opencontainers.image.title="Docker Flow Proxy" \
     org.opencontainers.image.description="Automated HAProxy Reverse Proxy for Docker" \
     org.opencontainers.image.url="https://proxy.dockerflow.com" \
